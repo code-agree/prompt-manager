@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const sortSelect = document.getElementById('sort-select');
 
   let prompts = [];
+  let editingIndex = -1;
 
   // Load saved prompts
   chrome.storage.sync.get(['prompts'], function(result) {
@@ -17,9 +18,18 @@ document.addEventListener('DOMContentLoaded', function() {
   saveButton.addEventListener('click', function() {
     const promptText = promptInput.value.trim();
     if (promptText) {
-      prompts.unshift({ text: promptText, timestamp: Date.now() });
+      if (editingIndex === -1) {
+        // Add new prompt
+        prompts.unshift({ text: promptText, timestamp: Date.now() });
+      } else {
+        // Update existing prompt
+        prompts[editingIndex].text = promptText;
+        prompts[editingIndex].timestamp = Date.now();
+        editingIndex = -1;
+      }
       chrome.storage.sync.set({ prompts: prompts }, function() {
         promptInput.value = '';
+        saveButton.textContent = 'Save';
         renderPrompts();
       });
     }
@@ -54,12 +64,25 @@ document.addEventListener('DOMContentLoaded', function() {
       const li = document.createElement('li');
       const promptPreview = truncateText(prompt.text, 50);
       
-      li.textContent = promptPreview;
-      li.title = prompt.text;
-      li.addEventListener('click', function() {
+      const promptSpan = document.createElement('span');
+      promptSpan.textContent = promptPreview;
+      promptSpan.title = prompt.text;
+      promptSpan.classList.add('prompt-text');
+      promptSpan.addEventListener('click', function() {
         promptInput.value = prompt.text;
       });
 
+      const editButton = document.createElement('button');
+      editButton.textContent = 'Edit';
+      editButton.classList.add('edit-button');
+      editButton.addEventListener('click', function() {
+        promptInput.value = prompt.text;
+        editingIndex = prompts.indexOf(prompt);
+        saveButton.textContent = 'Update';
+      });
+
+      li.appendChild(promptSpan);
+      li.appendChild(editButton);
       promptList.appendChild(li);
     });
   }

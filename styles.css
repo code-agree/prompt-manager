@@ -26,12 +26,24 @@ ul {
 li {
   padding: 5px;
   border-bottom: 1px solid #ddd;
-  cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 li:hover {
   background-color: #f0f0f0;
+}
+
+.prompt-text {
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-grow: 1;
+}
+
+.edit-button {
+  width: auto;
+  margin-left: 10px;
 }
