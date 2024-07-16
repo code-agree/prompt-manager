@@ -43,7 +43,13 @@ li:hover {
   flex-grow: 1;
 }
 
-.edit-button {
+.button-container {
+  display: flex;
+  gap: 5px;
+}
+
+.prompt-button {
   width: auto;
-  margin-left: 10px;
+  padding: 2px 5px;
+  font-size: 0.8em;
 }

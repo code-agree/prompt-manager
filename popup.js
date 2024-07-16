@@ -72,19 +72,44 @@ document.addEventListener('DOMContentLoaded', function() {
         promptInput.value = prompt.text;
       });
 
-      const editButton = document.createElement('button');
-      editButton.textContent = 'Edit';
-      editButton.classList.add('edit-button');
-      editButton.addEventListener('click', function() {
+      const buttonContainer = document.createElement('div');
+      buttonContainer.classList.add('button-container');
+
+      const editButton = createButton('Edit', function() {
         promptInput.value = prompt.text;
         editingIndex = prompts.indexOf(prompt);
         saveButton.textContent = 'Update';
       });
 
+      const deleteButton = createButton('Delete', function() {
+        if (confirm('Are you sure you want to delete this prompt?')) {
+          prompts.splice(prompts.indexOf(prompt), 1);
+          chrome.storage.sync.set({ prompts: prompts }, renderPrompts);
+        }
+      });
+
+      const copyButton = createButton('Copy', function() {
+        navigator.clipboard.writeText(prompt.text).then(function() {
+          alert('Prompt copied to clipboard!');
+        });
+      });
+
+      buttonContainer.appendChild(editButton);
+      buttonContainer.appendChild(deleteButton);
+      buttonContainer.appendChild(copyButton);
+
       li.appendChild(promptSpan);
-      li.appendChild(editButton);
+      li.appendChild(buttonContainer);
       promptList.appendChild(li);
     });
+  }
+
+  function createButton(text, onClick) {
+    const button = document.createElement('button');
+    button.textContent = text;
+    button.classList.add('prompt-button');
+    button.addEventListener('click', onClick);
+    return button;
   }
 
   function truncateText(text, maxLength) {
