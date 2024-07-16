@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Prompt Manager",
+  "version": "1.0",
+  "description": "Save and manage your frequently used prompts",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": ["storage"]
+}

@@ -1,0 +1,37 @@
+body {
+  width: 400px;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+}
+
+#input-area, #search-area, #sort-area {
+  margin-bottom: 10px;
+}
+
+input, select, button, textarea {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+li:hover {
+  background-color: #f0f0f0;
+}

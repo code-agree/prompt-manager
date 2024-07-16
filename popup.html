@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Prompt Manager</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <h1>Prompt Manager</h1>
+    <div id="input-area">
+      <textarea id="prompt-input" placeholder="Enter a new prompt (Markdown supported)"></textarea>
+      <button id="save-prompt">Save</button>
+    </div>
+    <div id="search-area">
+      <input type="text" id="search-input" placeholder="Search prompts">
+    </div>
+    <div id="sort-area">
+      <select id="sort-select">
+        <option value="time">Sort by Time</option>
+        <option value="custom">Custom Sort</option>
+      </select>
+    </div>
+    <ul id="prompt-list"></ul>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
