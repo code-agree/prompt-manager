@@ -1,8 +1,5 @@
-# prompt-manager
-Your best prompt-manager
-
 # Prompt Manager Chrome Extension
-
+Your best prompt-manager
 Prompt Manager is a Chrome extension designed to help users save, manage, and quickly access frequently used prompts. It's perfect for writers, customer service representatives, or anyone who often uses repetitive text snippets in their daily work.
 
 ## Features
