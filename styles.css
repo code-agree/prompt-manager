@@ -1,9 +1,19 @@
+:root {
+  --main-color: #607d8b;
+  --light-main: #b0bec5;
+  --dark-main: #455a64;
+  --background: #f5f7fa;
+  --text-color: #37474f;
+  --border-color: #cfd8dc;
+  --hover-color: #eceff1;
+}
+
 body {
   width: 400px;
   padding: 15px;
   font-family: 'Arial', sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
+  background-color: var(--background);
+  color: var(--text-color);
 }
 
 #input-area, #search-sort-area, #import-export-area {
@@ -11,7 +21,73 @@ body {
   background-color: #fff;
   padding: 10px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+input, select, textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: var(--text-color);
+}
+
+textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+button {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#save-prompt {
+  background-color: var(--main-color);
+  color: #fff;
+}
+
+#save-prompt:hover {
+  background-color: var(--dark-main);
+}
+
+.prompt-button {
+  width: auto;
+  padding: 5px 10px;
+  font-size: 0.8em;
+  background-color: var(--light-main);
+  color: var(--text-color);
+}
+
+.prompt-button:hover {
+  background-color: var(--main-color);
+  color: #fff;
+}
+
+#import-export-area {
+  display: flex;
+  justify-content: space-between;
+}
+
+#import-export-area button {
+  width: 48%;
+  background-color: var(--light-main);
+  color: var(--text-color);
+  font-size: 0.9em;
+}
+
+#import-export-area button:hover {
+  background-color: var(--main-color);
+  color: #fff;
 }
 
 #search-sort-area {
@@ -35,42 +111,11 @@ body {
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
-  font-size: 14px;
-  color: #666;
+  fill: var(--main-color);
 }
 
 #search-input, #sort-select {
-  width: 100%;
-  padding: 8px 8px 8px 30px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-input, select, button, textarea {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-textarea {
-  height: 100px;
-  resize: vertical;
-}
-
-button {
-  background-color: #3498db;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #2980b9;
+  padding-left: 30px;
 }
 
 ul {
@@ -80,7 +125,7 @@ ul {
 
 li {
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -91,7 +136,7 @@ li {
 }
 
 li:hover {
-  background-color: #f0f0f0;
+  background-color: var(--hover-color);
 }
 
 .prompt-text {
@@ -106,25 +151,4 @@ li:hover {
 .button-container {
   display: flex;
   gap: 5px;
-}
-
-.prompt-button {
-  width: auto;
-  padding: 5px 10px;
-  font-size: 0.8em;
-  background-color: #f0f0f0;
-  color: #333;
-}
-
-.prompt-button:hover {
-  background-color: #e0e0e0;
-}
-
-#import-export-area {
-  display: flex;
-  justify-content: space-between;
-}
-
-#import-export-area button {
-  width: 48%;
 }
