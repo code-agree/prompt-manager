@@ -53,6 +53,11 @@ To modify the extension:
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
+## Support the project
+If you like this project, you can buy me a coffee :coffee:
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/lineyua)
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
