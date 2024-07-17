@@ -1,5 +1,5 @@
 # prompt-manager
-your best prompt-manager
+Your best prompt-manager
 
 # Prompt Manager Chrome Extension
 
