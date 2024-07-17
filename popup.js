@@ -8,6 +8,14 @@ document.addEventListener('DOMContentLoaded', function() {
   let prompts = [];
   let editingIndex = -1;
 
+  const exportButton = document.getElementById('export-prompts');
+  const importButton = document.getElementById('import-prompts');
+  const importFile = document.getElementById('import-file');
+
+  exportButton.addEventListener('click', exportPrompts);
+  importButton.addEventListener('click', () => importFile.click());
+  importFile.addEventListener('change', importPrompts);
+
   // Load saved prompts
   chrome.storage.sync.get(['prompts'], function(result) {
     prompts = result.prompts || [];
@@ -115,5 +123,48 @@ document.addEventListener('DOMContentLoaded', function() {
   function truncateText(text, maxLength) {
     if (text.length <= maxLength) return text;
     return text.substr(0, maxLength) + '...';
+  }
+  // add input and output feature
+  function exportPrompts() {
+    const promptsData = JSON.stringify(prompts, null, 2);
+    const blob = new Blob([promptsData], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'prompts_export.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function importPrompts(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const importedPrompts = JSON.parse(e.target.result);
+          if (Array.isArray(importedPrompts)) {
+            // 合并导入的prompts和现有的prompts
+            prompts = [...importedPrompts, ...prompts];
+            // 去重
+            prompts = prompts.filter((prompt, index, self) =>
+              index === self.findIndex((t) => t.text === prompt.text)
+            );
+            // 保存到storage
+            chrome.storage.sync.set({ prompts: prompts }, function() {
+              renderPrompts();
+              alert('Prompts imported successfully!');
+            });
+          } else {
+            alert('Invalid file format. Please import a valid JSON file.');
+          }
+        } catch (error) {
+          alert('Error parsing file: ' + error.message);
+        }
+      };
+      reader.readAsText(file);
+    }
   }
 });

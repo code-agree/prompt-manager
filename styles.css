@@ -53,3 +53,13 @@ li:hover {
   padding: 2px 5px;
   font-size: 0.8em;
 }
+
+#import-export-area {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+#import-export-area button {
+  width: 48%;
+}
