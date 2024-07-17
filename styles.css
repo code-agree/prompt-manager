@@ -1,21 +1,76 @@
 body {
   width: 400px;
-  padding: 10px;
-  font-family: Arial, sans-serif;
+  padding: 15px;
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
 }
 
-#input-area, #search-area, #sort-area {
-  margin-bottom: 10px;
+#input-area, #search-sort-area, #import-export-area {
+  margin-bottom: 15px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#search-sort-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon-input-wrapper, .icon-select-wrapper {
+  position: relative;
+  flex-grow: 1;
+}
+
+.icon-input-wrapper {
+  margin-right: 10px;
+}
+
+.icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 14px;
+  color: #666;
+}
+
+#search-input, #sort-select {
+  width: 100%;
+  padding: 8px 8px 8px 30px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 input, select, button, textarea {
   width: 100%;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 textarea {
   height: 100px;
   resize: vertical;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #2980b9;
 }
 
 ul {
@@ -24,11 +79,15 @@ ul {
 }
 
 li {
-  padding: 5px;
+  padding: 10px;
   border-bottom: 1px solid #ddd;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #fff;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
 }
 
 li:hover {
@@ -41,6 +100,7 @@ li:hover {
   text-overflow: ellipsis;
   white-space: nowrap;
   flex-grow: 1;
+  margin-right: 10px;
 }
 
 .button-container {
@@ -50,14 +110,19 @@ li:hover {
 
 .prompt-button {
   width: auto;
-  padding: 2px 5px;
+  padding: 5px 10px;
   font-size: 0.8em;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.prompt-button:hover {
+  background-color: #e0e0e0;
 }
 
 #import-export-area {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
 }
 
 #import-export-area button {

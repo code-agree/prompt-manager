@@ -16,14 +16,18 @@
       <input type="file" id="import-file" accept=".json" style="display: none;">
       <button id="import-prompts">Import Prompts</button>
     </div>
-    <div id="search-area">
-      <input type="text" id="search-input" placeholder="Search prompts">
-    </div>
-    <div id="sort-area">
-      <select id="sort-select">
-        <option value="time">Sort by Time</option>
-        <option value="custom">Custom Sort</option>
-      </select>
+    <div id="search-sort-area">
+      <div class="icon-input-wrapper">
+        <span class="icon search-icon">&#x1F50D;</span>
+        <input type="text" id="search-input" placeholder="Search prompts">
+      </div>
+      <div class="icon-select-wrapper">
+        <span class="icon sort-icon">&#x25BC;</span>
+        <select id="sort-select">
+          <option value="time">Sort by Time</option>
+          <option value="custom">Custom Sort</option>
+        </select>
+      </div>
     </div>
     <ul id="prompt-list"></ul>
   </div>
