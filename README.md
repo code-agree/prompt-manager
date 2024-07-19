@@ -14,7 +14,7 @@ Prompt Manager is a Chrome extension designed to help users save, manage, and qu
 - Import and export prompts for backup or transfer
 
 ## Interface
-![Prompt Manager Interface](../image/interface.png)
+![Prompt Manager Interface](./image/interface.png)
 *Prompt Manager main interface*
 
 ## Installation
